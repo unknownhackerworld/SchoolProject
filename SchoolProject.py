@@ -20,11 +20,12 @@ while True:
             print("Enter Details")
             for info in inputs:
                 if info == "DOB":
-                    a = str(input(f'Enter Your DOB (DD/MM/YYYY): '))
+                    a = str(input('Enter Your DOB (DD/MM/YYYY): '))
                 else:
                     a = str(input(f'Enter Your {info}: '))
                 single[info] = a
                 infos.update({ single['ID'] : infos })
+            print(str(infos),"\n\n",str(single))
             print("\n"*5)
 
         elif (ch==2):
@@ -32,8 +33,11 @@ while True:
             if id in infos:
                 prob = str(input("Enter A Brief Explanation Of Your Problem: "))
                 time_slot = input("Enter Time Slot (Today) HH:MM")
+                info[id] = {"problem" : prob, "time":time_slot}
+                print(info.getkeys())
+
             else:
                 print("Please Create Admission")
             print("\n"*5)
 
-
+        #elif(ch==3):
