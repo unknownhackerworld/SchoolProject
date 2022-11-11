@@ -27,7 +27,7 @@ while True:
                 infos.update({ single['ID'] : infos })
             print(str(infos),"\n\n",str(single))
             print("\n"*5)
-
+            
         elif (ch==2):
             id = str(input("Please Enter Your Id: "))
             if id in infos:
