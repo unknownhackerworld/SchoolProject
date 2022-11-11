@@ -45,4 +45,4 @@ while True:
             id = str(input("Please Enter Your ID: "))
             if id in infos:
                 print("Problems\t\tTime Slot")
-                print(infos[id]["problems"],"\t\t",infos[id]["time"])
+                print(infos[id]["problems"],"\t\t\t",infos[id]["time"])
