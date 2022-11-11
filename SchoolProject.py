@@ -4,7 +4,6 @@ infos = dict()
 while True:
     for info in inputs:
         a = str(input(f'Enter Your {info}: '))
-        b =a 
-        infos[info] = b
+        infos[info] = a
 
     print(infos)
