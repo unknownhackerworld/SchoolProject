@@ -1,12 +1,17 @@
 from pyfiglet import Figlet
+import random
+
+ids=[]
 
 fig = Figlet(font="doom").renderText('Hospital Management')  # Figlet
-inputs = ["ID","Name","Age","DOB","Contact No","Emergency Contact"]
+inputs = ["Name","Age","DOB","Contact No","Emergency Contact"]
 infos = {}
 single = {}
 
 
 while True:
+    rand = random.randrange(1,999)
+    ids.append(rand)
     print(fig)
     print("1.Patient\n2.Admin")
     user = int(input("Enter Your Choice: "))
@@ -17,18 +22,21 @@ while True:
         print("\n"*3)
         
         if (ch==1):    
+            single["ID"] = rand
             print("Enter Details")
             for info in inputs:
                 if info == "DOB":
                     a = str(input('Enter Your DOB (DD/MM/YYYY): '))
                 else:
                     a = str(input(f'Enter Your {info}: '))
+                    
                 single[info] = a
                 infos.update({ single['ID'] : single })
+            print(f"Your ID is {rand}")
             print("\n"*5)
             
         elif (ch==2):
-            id = str(input("Please Enter Your ID: "))
+            id = (input("Please Enter Your ID: "))
             if id in infos:
                 prob = str(input("Enter A Brief Explanation Of Your Problem: "))
                 time_slot = input("Enter Time Slot (Today) HH:MM: ")
@@ -74,8 +82,6 @@ while True:
                 print("No Of Patients: ",len(infos))
             if (ch==2):
                 for key,value in infos.items():
-                    print("\nPerson ID:", key)
-
                     for key in value:
                         print(key + ':', value[key])
             if (ch==3):
