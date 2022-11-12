@@ -6,12 +6,10 @@ ids=[]
 fig = Figlet(font="doom").renderText('Hospital Management')  # Figlet
 inputs = ["Name","Age","DOB","Contact No","Emergency Contact"]
 infos = {}
-single = {}
 
 
 while True:
-    rand = random.randrange(1,999)
-    ids.append(rand)
+    single = {}
     print(fig)
     print("1.Patient\n2.Admin")
     user = int(input("Enter Your Choice: "))
@@ -21,8 +19,10 @@ while True:
         ch = int(input("Enter Your Choice: "))
         print("\n"*3)
         
-        if (ch==1):    
-            single["ID"] = rand
+        if (ch==1):   
+            rand = random.randrange(1,999)
+            ids.append(rand)
+            single["ID"] = str(rand)
             print("Enter Details")
             for info in inputs:
                 if info == "DOB":
@@ -31,12 +31,14 @@ while True:
                     a = str(input(f'Enter Your {info}: '))
                     
                 single[info] = a
-                infos.update({ single['ID'] : single })
+                
+            infos.update({rand:single})
             print(f"Your ID is {rand}")
+            print(infos)
             print("\n"*5)
             
         elif (ch==2):
-            id = (input("Please Enter Your ID: "))
+            id = str(input("Please Enter Your ID: "))
             if id in infos:
                 prob = str(input("Enter A Brief Explanation Of Your Problem: "))
                 time_slot = input("Enter Time Slot (Today) HH:MM: ")
