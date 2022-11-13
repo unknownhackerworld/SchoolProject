@@ -1,6 +1,7 @@
 from pyfiglet import Figlet
 import random
 
+
 ids=[]
 
 fig = Figlet(font="doom").renderText('Hospital Management')  # Figlet
@@ -13,9 +14,9 @@ while True:
     print("1.Patient\n2.Admin")
     user = int(input("Enter Your Choice: "))
     print("\n"*5)
-    if (user==1):
+    while (user==1):
         single = {}
-        print("1.New Admission\n2.Book Appointment\n3.Check Appointment\n4.Delete User\n5.View Patient Details")
+        print("1.New Admission\n2.Book Appointment\n3.Check Appointment\n4.Delete User\n5.View Patient Details\n6.Go To Admin")
         ch = int(input("Enter Your Choice: "))
         print("\n"*3)
         
@@ -34,12 +35,16 @@ while True:
                 
             infos.update({rand:single})
             print(f"Your ID is {rand}")
-            print(infos)
+            cntn = input("Press Enter To Continue")
+            if cntn == "":
+                pass
+            else:
+                exit()
             print("\n"*5)
             
         elif (ch==2):
-            id = str(input("Please Enter Your ID: "))
-            if id in infos:
+            id = int(input("Please Enter Your ID: "))
+            if id in ids:
                 prob = str(input("Enter A Brief Explanation Of Your Problem: "))
                 time_slot = input("Enter Time Slot (Today) HH:MM: ")
                 infos[id]["problems"] = prob
@@ -48,12 +53,13 @@ while True:
 
             else:
                 print("Please Create Admission")
+                print(infos)
             print("\n"*5)
 
         elif(ch==3):
-            id = str(input("Please Enter Your ID: "))
+            id = int(input("Please Enter Your ID: "))
             try:
-                if id in infos:
+                if id in ids:
                     print("Problems\t\tTime Slot")
                     print(infos[id]["problems"],"\t\t\t",infos[id]["time"])
                 else:
@@ -61,19 +67,23 @@ while True:
             except KeyError:
                 print("Please Create Admission")
         elif(ch==4):
-            id = str(input("Please Enter Your ID: "))
-            if id in infos:
+            id = int(input("Please Enter Your ID: "))
+            if id in ids:
                 con = str(input("Are You Sure You Wanna Delete Your Account? (Y/N)")).upper()
                 if con == "Y":
                     del infos[id]
                     print("Record Deleted!")
                 else:
                     pass    
-
+        
             else:
                 print("Please Create Admission")
+        elif (ch==6):
+            check = input("Enter ADMIN Password: ")
+            if (check=="SSM"):
+                user = 2
 
-    elif (user==2):
+    while (user==2):
         password = str(input("Enter Password: "))
         if password == "SSM":
             print("\n"*2)
