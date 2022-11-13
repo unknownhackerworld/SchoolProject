@@ -1,7 +1,6 @@
 from pyfiglet import Figlet
 import random
 
-
 ids=[]
 
 fig = Figlet(font="doom").renderText('Hospital Management')  # Figlet
@@ -34,7 +33,7 @@ while True:
                 single[info] = a
                 
             infos.update({rand:single})
-            print(f"Your ID is {rand}")
+            print(f"\nYour ID is {rand}\n")
             cntn = input("Press Enter To Continue")
             if cntn == "":
                 pass
@@ -78,6 +77,17 @@ while True:
         
             else:
                 print("Please Create Admission")
+        elif (ch==5):
+            id = int(input("Please Enter Your ID: "))
+            if id in ids:
+                for id, info in infos.items():
+                    for key in info:
+                        print(key + ':', info[key],"\n\n\n")
+            cntn = input("Press Enter To Continue")
+            if cntn == "":
+                pass
+            else:
+                exit()
         elif (ch==6):
             check = input("Enter ADMIN Password: ")
             if (check=="SSM"):
