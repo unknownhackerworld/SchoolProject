@@ -9,12 +9,12 @@ infos = {}
 
 
 while True:
-    single = {}
     print(fig)
     print("1.Patient\n2.Admin")
     user = int(input("Enter Your Choice: "))
     print("\n"*5)
     if (user==1):
+        single = {}
         print("1.New Admission\n2.Book Appointment\n3.Check Appointment\n4.Delete User\n5.View Patient Details")
         ch = int(input("Enter Your Choice: "))
         print("\n"*3)
