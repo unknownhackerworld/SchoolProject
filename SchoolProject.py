@@ -62,7 +62,7 @@ while True:
                     print("Problems\t\tTime Slot")
                     print(infos[id]["problems"],"\t\t\t",infos[id]["time"])
                 else:
-                    print("Please Create Admission")
+                    print("Please Create Admission\n\n")
             except KeyError:
                 print("Please Create Admission")
         elif(ch==4):
@@ -79,10 +79,12 @@ while True:
                 print("Please Create Admission")
         elif (ch==5):
             id = int(input("Please Enter Your ID: "))
+            print("\n")
             if id in ids:
                 for id, info in infos.items():
                     for key in info:
-                        print(key + ':', info[key],"\n\n\n")
+                        print(key + ':', info[key])
+            print("\n")
             cntn = input("Press Enter To Continue")
             if cntn == "":
                 pass
@@ -98,7 +100,7 @@ while True:
         if password == "SSM":
             print("\n"*2)
             print("Welcome To ADMIN Panel!!")
-            print("1.No Of Patients\n2.Patients Details\n3.Check Appointment\n4.Delete User\n5.View Patient Details")
+            print("1.No Of Patients\n2.Patients Details\n3.Check Appointment\n4.Delete User\n5.View Patient Info")
             ch = int(input("Enter Your Choice: "))
             if (ch==1):
                 print("No Of Patients: ",len(infos))
@@ -109,3 +111,30 @@ while True:
             if (ch==3):
                 for key in infos.keys():
                     print(infos[key]["problems"])
+            if (ch==4):
+                id = int(input("Please Enter Your ID: "))
+                if id in ids:
+                    con = str(
+                        input("Are You Sure You Wanna Delete Your Account? (Y/N)")).upper()
+                    if con == "Y":
+                        del infos[id]
+                        print("Record Deleted!")
+                    else:
+                        pass
+
+                else:
+                    print("Please Create Admission")
+
+            if (ch==5):
+                id = int(input("Please Enter Your ID: "))
+                print("\n")
+                if id in ids:
+                    for id, info in infos.items():
+                        for key in info:
+                            print(key + ':', info[key])
+                print("\n")            
+                cntn = input("Press Enter To Continue")
+                if cntn == "":
+                    pass
+                else:
+                    exit()
