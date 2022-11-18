@@ -100,7 +100,7 @@ def admin():
     if password == "SSM":
         print("\n"*2)
         print("Welcome To ADMIN Panel!!")
-        print("1.No Of Patients\n2.Patients Details\n3.Check Appointment\n4.Delete User\n5.View Patient Info")
+        print("1.No Of Patients\n2.Patients Details\n3.Check Appointment\n4.Delete User\n5.View Patient Info\n6.Patients Panel")
         ch = int(input("Enter Your Choice: "))
         if (ch==1):
             print("No Of Patients: ",len(infos))
@@ -115,6 +115,8 @@ def admin():
 
         if (ch==5):
             viewDetails()
+        if (ch==6):
+            patient()    
 
 def patient():
     print("1.New Admission\n2.Book Appointment\n3.Check Appointment\n4.Delete User\n5.View Patient Details\n6.Go To Admin")
@@ -142,6 +144,9 @@ while True:
     print(fig)
     print("1.Patient\n2.Admin")
     user = int(input("Enter Your Choice: "))
-    print("\n"*5)
-    
-
+    if user == 1:
+        patient()
+    elif user ==2:
+        admin()        
+    else:
+        print("Enter Valid Option\n")    
