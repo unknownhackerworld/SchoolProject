@@ -22,7 +22,7 @@ def newAdmission():
             a = str(input(f'Enter Your {info}: '))
 
         single[info] = a
-
+    
     infos.update({rand: single})
     print(f"\nYour ID is {rand}\n")
     cntn = input("Press Enter To Continue")
@@ -30,7 +30,7 @@ def newAdmission():
         pass
     else:
         exit()
-    print("\n"*2)
+    print("\n")
 
 
 def bookAppointment():
@@ -52,11 +52,11 @@ def checkAppointment():
     try:
         if id in ids:
             print("Problems\t\tTime Slot")
-            print(infos[id]["problems"], "\t\t\t", infos[id]["time"])
+            print(infos[id]["problems"], "\t\t\t", infos[id]["time"],"\n\n")
         else:
             print("Please Create Admission\n\n")
     except KeyError:
-        print("Please Create Admission")
+        print("Please Create Admission\n\n")
 
 def deleteUser():
     id = int(input("Please Enter Your ID: "))
@@ -96,18 +96,19 @@ def viewAppointments():
         print(infos[key]["problems"])
 
 
-    
-
 def admin():
     fig("Admin Panel")
     password = str(input("Enter Password: "))
     if password == "SSM":
-        print("\n"*2)
+        print("\n")
         print("Welcome To ADMIN Panel!!")
         print("1.No Of Patients\n2.Patients Details\n3.Check Appointment\n4.Delete User\n5.View Patient Info\n6.Patients Panel")
+
         ch = int(input("Enter Your Choice: "))
+
         if (ch==1):
             print("No Of Patients: ",len(infos))
+
         if (ch==2):
             viewAllDetails()
 
@@ -119,29 +120,31 @@ def admin():
 
         if (ch==5):
             viewDetails()
+
         if (ch==6):
             patient()    
 
 def patient():
-    fig("Patients Panel")
-    print("1.New Admission\n2.Book Appointment\n3.Check Appointment\n4.Delete User\n5.View Patient Details\n6.Go To Admin\n")
-    ch = int(input("Enter Your Choice: "))
-    print("\n")
+    while True:
+        fig("Patients Panel")
+        print("1.New Admission\n2.Book Appointment\n3.Check Appointment\n4.Delete User\n5.View Patient Details\n6.Go To Admin\n")
+        ch = int(input("Enter Your Choice: "))
+        print("\n")
 
-    if (ch == 1):
-        newAdmission()
+        if (ch == 1):
+            newAdmission()
 
-    elif (ch == 2):
-        bookAppointment()
+        elif (ch == 2):
+            bookAppointment()
 
-    elif (ch == 3):
-        checkAppointment()
-    elif (ch == 4):
-        deleteUser()
-    elif (ch == 5):
-        viewDetails()
-    elif (ch == 6):
-        admin()
+        elif (ch == 3):
+            checkAppointment()
+        elif (ch == 4):
+            deleteUser()
+        elif (ch == 5):
+            viewDetails()
+        elif (ch == 6):
+            admin()
 
 while True:
     fig("Hospital Management")
