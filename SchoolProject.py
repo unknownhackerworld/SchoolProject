@@ -8,7 +8,7 @@ inputs = ["Name","Age","DOB","Contact No","Emergency Contact"]
 infos = {}
 
 def cntn():
-    
+
     print("\n")
     yn = input("Press Enter To Continue")
     if yn == "":
@@ -144,6 +144,9 @@ def admin():
             else:
                 print("Enter Valid Option")
             cntn()    
+    else:
+        print("Incorrect Password")
+        admin()
 
 def patient():
     while True:
@@ -167,7 +170,8 @@ def patient():
         elif (ch == 6):
             admin()
         else:
-            print("Enter Valid Option")    
+            print("Enter Valid Option")   
+        cntn()     
 
 while True:
     fig("Hospital Management")
