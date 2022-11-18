@@ -7,6 +7,15 @@ single = dict()
 inputs = ["Name","Age","DOB","Contact No","Emergency Contact"]
 infos = {}
 
+def cntn():
+    
+    print("\n")
+    yn = input("Press Enter To Continue")
+    if yn == "":
+        pass
+    else:
+        exit()
+
 def fig(text):
     print(Figlet(font="doom").renderText(text))
 
@@ -56,7 +65,7 @@ def checkAppointment():
         else:
             print("Please Create Admission\n\n")
     except KeyError:
-        print("Please Create Admission\n\n")
+        print("No Appointment Record\n\n")
 
 def deleteUser():
     id = int(input("Please Enter Your ID: "))
@@ -92,37 +101,49 @@ def viewAllDetails():
             print(key + ':', value[key])
 
 def viewAppointments():
-    for key in infos.keys():
-        print(infos[key]["problems"])
+    if infos:
+        try:
+            for key in infos.keys():
+                print(infos[key]["problems"])
+        except KeyError:
+            print("No Records")
+    else:
+        print("No Records")            
 
 
 def admin():
+    
     fig("Admin Panel")
     password = str(input("Enter Password: "))
     if password == "SSM":
-        print("\n")
-        print("Welcome To ADMIN Panel!!")
-        print("1.No Of Patients\n2.Patients Details\n3.Check Appointment\n4.Delete User\n5.View Patient Info\n6.Patients Panel")
+        while True:
+            print("\n")
+            print("Welcome To ADMIN Panel!!\n")
+            print("1.No Of Patients\n2.Patients Details\n3.Check Appointment\n4.Delete User\n5.View Patient Info\n6.Patients Panel\n")
 
-        ch = int(input("Enter Your Choice: "))
+            ch = int(input("Enter Your Choice: "))
 
-        if (ch==1):
-            print("No Of Patients: ",len(infos))
+            if (ch==1):
+                print("No Of Patients: ",len(infos))
 
-        if (ch==2):
-            viewAllDetails()
+            elif (ch==2):
+                viewAllDetails()
 
-        if (ch==3):
-            viewAppointments()
+            elif (ch==3):
+                viewAppointments()
 
-        if (ch==4):
-            deleteUser()
+            elif (ch==4):
+                deleteUser()
 
-        if (ch==5):
-            viewDetails()
+            elif (ch==5):
+                viewDetails()
 
-        if (ch==6):
-            patient()    
+            elif (ch==6):
+                patient() 
+
+            else:
+                print("Enter Valid Option")
+            cntn()    
 
 def patient():
     while True:
@@ -145,6 +166,8 @@ def patient():
             viewDetails()
         elif (ch == 6):
             admin()
+        else:
+            print("Enter Valid Option")    
 
 while True:
     fig("Hospital Management")
