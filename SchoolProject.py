@@ -83,6 +83,18 @@ def viewDetails():
     else:
         exit()
 
+def viewAllDetails():
+    for key,value in infos.items():
+        for key in value:
+            print(key + ':', value[key])
+
+def viewAppointments():
+    for key in infos.keys():
+        print(infos[key]["problems"])
+
+
+    
+
 def admin():
     password = str(input("Enter Password: "))
     if password == "SSM":
@@ -93,39 +105,16 @@ def admin():
         if (ch==1):
             print("No Of Patients: ",len(infos))
         if (ch==2):
-            for key,value in infos.items():
-                for key in value:
-                    print(key + ':', value[key])
-        if (ch==3):
-            for key in infos.keys():
-                print(infos[key]["problems"])
-        if (ch==4):
-            id = int(input("Please Enter Your ID: "))
-            if id in ids:
-                con = str(
-                    input("Are You Sure You Wanna Delete Your Account? (Y/N)")).upper()
-                if con == "Y":
-                    del infos[id]
-                    print("Record Deleted!")
-                else:
-                    pass
+            viewAllDetails()
 
-            else:
-                print("Please Create Admission")
+        if (ch==3):
+            viewAppointments()
+
+        if (ch==4):
+            deleteUser()
 
         if (ch==5):
-            id = int(input("Please Enter Your ID: "))
-            print("\n")
-            if id in ids:
-                for id, info in infos.items():
-                    for key in info:
-                        print(key + ':', info[key])
-            print("\n")            
-            cntn = input("Press Enter To Continue")
-            if cntn == "":
-                pass
-            else:
-                exit()
+            viewDetails()
 
 def patient():
     print("1.New Admission\n2.Book Appointment\n3.Check Appointment\n4.Delete User\n5.View Patient Details\n6.Go To Admin")
