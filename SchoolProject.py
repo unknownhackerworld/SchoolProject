@@ -3,9 +3,12 @@ import random
 
 ids=[]
 single = dict()
-fig = Figlet(font="doom").renderText('Hospital Management')  # Figlet
+  # Figlet
 inputs = ["Name","Age","DOB","Contact No","Emergency Contact"]
 infos = {}
+
+def fig(text):
+    print(Figlet(font="doom").renderText(text))
 
 def newAdmission():
     rand = random.randrange(1, 999)
@@ -27,7 +30,7 @@ def newAdmission():
         pass
     else:
         exit()
-    print("\n"*5)
+    print("\n"*2)
 
 
 def bookAppointment():
@@ -42,7 +45,7 @@ def bookAppointment():
     else:
         print("Please Create Admission")
         print(infos)
-    print("\n"*5)
+    print("\n"*2)
 
 def checkAppointment():
     id = int(input("Please Enter Your ID: "))
@@ -96,6 +99,7 @@ def viewAppointments():
     
 
 def admin():
+    fig("Admin Panel")
     password = str(input("Enter Password: "))
     if password == "SSM":
         print("\n"*2)
@@ -119,9 +123,10 @@ def admin():
             patient()    
 
 def patient():
-    print("1.New Admission\n2.Book Appointment\n3.Check Appointment\n4.Delete User\n5.View Patient Details\n6.Go To Admin")
+    fig("Patients Panel")
+    print("1.New Admission\n2.Book Appointment\n3.Check Appointment\n4.Delete User\n5.View Patient Details\n6.Go To Admin\n")
     ch = int(input("Enter Your Choice: "))
-    print("\n"*3)
+    print("\n")
 
     if (ch == 1):
         newAdmission()
@@ -136,17 +141,17 @@ def patient():
     elif (ch == 5):
         viewDetails()
     elif (ch == 6):
-        check = input("Enter ADMIN Password: ")
-        if (check == "SSM"):
-            admin()
+        admin()
 
 while True:
-    print(fig)
+    fig("Hospital Management")
     print("1.Patient\n2.Admin")
     user = int(input("Enter Your Choice: "))
     if user == 1:
+        print()
         patient()
     elif user ==2:
+        print()
         admin()        
     else:
         print("Enter Valid Option\n")    
