@@ -34,12 +34,6 @@ def newAdmission():
     
     infos.update({rand: single})
     print(f"\nYour ID is {rand}\n")
-    cntn = input("Press Enter To Continue")
-    if cntn == "":
-        pass
-    else:
-        exit()
-    print("\n")
 
 
 def bookAppointment():
@@ -54,10 +48,10 @@ def bookAppointment():
     else:
         print("Please Create Admission")
         print(infos)
-    print("\n"*2)
 
 def checkAppointment():
     id = int(input("Please Enter Your ID: "))
+    print("\n")
     try:
         if id in ids:
             print("Problems\t\tTime Slot")
@@ -88,12 +82,7 @@ def viewDetails():
         for id, info in infos.items():
             for key in info:
                 print(key + ':', info[key])
-    print("\n")
-    cntn = input("Press Enter To Continue")
-    if cntn == "":
-        pass
-    else:
-        exit()
+    
 
 def viewAllDetails():
     for key,value in infos.items():
