@@ -109,8 +109,10 @@ def admin():
             print("\n")
             print("Welcome To ADMIN Panel!!\n")
             print("1.No Of Patients\n2.Patients Details\n3.Check Appointment\n4.Delete User\n5.View Patient Info\n6.Patients Panel\n")
-
-            ch = int(input("Enter Your Choice: "))
+            try:
+                ch = int(input("Enter Your Choice: "))
+            except ValueError:
+                print("Enter Valid Option")
 
             if (ch==1):
                 print("No Of Patients: ",len(infos))
@@ -141,7 +143,10 @@ def patient():
     while True:
         fig("Patients Panel")
         print("1.New Admission\n2.Book Appointment\n3.Check Appointment\n4.Delete User\n5.View Patient Details\n6.Go To Admin\n")
-        ch = int(input("Enter Your Choice: "))
+        try:
+            ch = int(input("Enter Your Choice: "))
+        except ValueError:
+            print("Enter Valid Option")    
         print("\n")
 
         if (ch == 1):
@@ -165,7 +170,11 @@ def patient():
 while True:
     fig("Hospital Management")
     print("1.Patient\n2.Admin")
-    user = int(input("Enter Your Choice: "))
+    try:
+        user = int(input("Enter Your Choice: "))
+    except ValueError:
+        print("Enter Valid Option\n")
+
     if user == 1:
         print()
         patient()
