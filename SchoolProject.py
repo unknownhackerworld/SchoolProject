@@ -2,7 +2,6 @@ from pyfiglet import Figlet
 import random
 
 ids=[]
-single = dict()
   # Figlet
 inputs = ["Name","Age","DOB","Contact No","Emergency Contact"]
 infos = {}
@@ -68,6 +67,7 @@ def deleteUser():
             input("Are You Sure You Wanna Delete Your Account? (Y/N)")).upper()
         if con == "Y":
             del infos[id]
+            ids.remove(id)
             print("Record Deleted!")
         else:
             pass
@@ -92,6 +92,7 @@ def viewAllDetails():
     for key,value in infos.items():
         for key in value:
             print(key + ':', value[key])
+        print()    
 
 def viewAppointments():
     if infos:
