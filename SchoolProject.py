@@ -20,6 +20,7 @@ def fig(text):
     print(Figlet(font="doom").renderText(text))
 
 def newAdmission():
+    single = {}
     rand = random.randrange(1, 999)
     ids.append(rand)
     single["ID"] = str(rand)
@@ -33,7 +34,7 @@ def newAdmission():
         single[info] = a
     
     infos.update({rand: single})
-    print(f"\nYour ID is {rand}\n")
+    print(f"\nYour ID is {rand}")
 
 
 def bookAppointment():
@@ -47,7 +48,6 @@ def bookAppointment():
 
     else:
         print("Please Create Admission")
-        print(infos)
 
 def checkAppointment():
     id = int(input("Please Enter Your ID: "))
@@ -79,9 +79,13 @@ def viewDetails():
     id = int(input("Please Enter Your ID: "))
     print("\n")
     if id in ids:
-        for id, info in infos.items():
-            for key in info:
-                print(key + ':', info[key])
+        for iD, info in infos.items():
+            if iD == id:
+                for key in info:
+                    print(key + ':', info[key])
+                print()    
+    else:
+        print("Please Create Admission")        
     
 
 def viewAllDetails():
@@ -146,25 +150,28 @@ def patient():
         try:
             ch = int(input("Enter Your Choice: "))
         except ValueError:
-            print("Enter Valid Option")    
+            print("Enter Valid Option")       
         print("\n")
+        
+        try:
+            if (ch == 1):
+                newAdmission()
 
-        if (ch == 1):
-            newAdmission()
+            elif (ch == 2):
+                bookAppointment()
 
-        elif (ch == 2):
-            bookAppointment()
-
-        elif (ch == 3):
-            checkAppointment()
-        elif (ch == 4):
-            deleteUser()
-        elif (ch == 5):
-            viewDetails()
-        elif (ch == 6):
-            admin()
-        else:
-            print("Enter Valid Option")   
+            elif (ch == 3):
+                checkAppointment()
+            elif (ch == 4):
+                deleteUser()
+            elif (ch == 5):
+                viewDetails()
+            elif (ch == 6):
+                admin()
+            else:
+                print("Enter Valid Option")
+        except UnboundLocalError:
+            pass                  
         cntn()     
 
 while True:
