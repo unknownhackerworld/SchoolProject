@@ -20,34 +20,37 @@ def fig(text):
     print(Figlet(font="doom").renderText(text))
 
 def o2(a):
-    global oxy
-    if a == "check":
-    #check
-        print("Available Oxygen: ",oxy)
+    try:
+        global oxy
+        if a == "check":
+        #check
+            print("Available Oxygen: ",oxy)
 
-    elif a == "order":
-        #order
-        x = int(input("Enter Amount Of OXYGEN Cylinder To Order: "))
-        oxy+=x
-        print("Succesfully Ordered")
-        print(f"Amount To Pay {1000*x}")
-    
-    elif a == "use":
-        if oxy <= 0:
-            z = str(input("\nThere Is No Oxygen Cylinder Left!\nDo You Want To Order? (Y/N): \n").upper())
-            if (z == "Y"):
-                o2("order")
+        elif a == "order":
+            #order
+            x = int(input("Enter Amount Of OXYGEN Cylinder To Order: "))
+            oxy+=x
+            print("Succesfully Ordered")
+            print(f"Amount To Pay {1000*x}")
+        
+        elif a == "use":
+            if oxy <= 0:
+                z = str(input("\nThere Is No Oxygen Cylinder Left!\nDo You Want To Order? (Y/N): \n").upper())
+                if (z == "Y"):
+                    o2("order")
 
-        elif oxy > 0:
-            #use oxygen
-            y = int(input("Enter Amount Of Oxygen To Use:- "))
-            if y > oxy:
-                print(f"\nOnly {oxy} Number Of Cylinders Are Available. Please Enter Between 1 and {oxy}")
-                o2("use")
-            else:
-                oxy-=y
-                print(f"Used {y} Amount of Oxygen\nBalance Oxygen Available: {oxy}")
+            elif oxy > 0:
+                #use oxygen
+                y = int(input("Enter Amount Of Oxygen To Use:- "))
+                if y > oxy:
+                    print(f"\nOnly {oxy} Number Of Cylinders Are Available. Please Enter Between 1 and {oxy}")
+                    o2("use")
+                else:
+                    oxy-=y
+                    print(f"Used {y} Amount of Oxygen\nBalance Oxygen Available: {oxy}")
 
+    except ValueError:
+        print("Enter Proper Value")
     
 
 def newAdmission():
@@ -79,6 +82,17 @@ def bookAppointment():
 
     else:
         print("Please Create Admission")
+
+def viewAppointments():
+    
+    try:
+        print("Problems\t\tTime Slot")
+        for key in infos.keys():
+            print(infos[key]["problems"],"\t\t\t",infos[key]["time"])
+                
+    except KeyError:
+        print("No Records")
+    
 
 def checkAppointment():
     id = int(input("Please Enter Your ID: "))
@@ -126,15 +140,7 @@ def viewAllDetails():
             print(key + ':', value[key])
         print()    
 
-def viewAppointments():
-    if infos:
-        try:
-            for key in infos.keys():
-                print(infos[key]["problems"])
-        except KeyError:
-            print("No Records")
-    else:
-        print("No Records")            
+            
 
 
 def admin():
